@@ -27,15 +27,19 @@ var pkg = require('./package.json');
 gulp.task('copy-bundle', function() {
     gulp.src([
             './bower_components/bootstrap/dist/css/bootstrap.min.css',
-            './bower_components/bootstrap/dist/css/bootstrap-theme.min.css'
+            './bower_components/bootstrap/dist/css/bootstrap-theme.min.css',
+            './src/css/sm.min.css'
         ])
         .pipe(plumber())
         .pipe(concat('bundle.css'))
         .pipe(gulp.dest('./app/static/css'));
 
     gulp.src([
-      './bower_components/jquery/dist/jquery.min.js',
-      './bower_components/jquery_lazyload/jquery.lazyload.js'
+      // './bower_components/jquery/dist/jquery.min.js',
+      './bower_components/zepto/zepto.min.js',
+      // '/lazyload/src/script/sm.min.js',
+      // './bower_components/jquery_lazyload/jquery.lazyload.js',
+      // './bower_components/underscore/underscore-min.js'
         ])
         .pipe(plumber())
         .pipe(concat('bundle.js'))
@@ -58,6 +62,17 @@ gulp.task('copy-image', function() {
     .pipe(gulp.dest('./app/static/img'));
 });
 
+gulp.task('copy-images', function() {
+  gulp.src('./src/images/*')
+    .pipe(plumber())
+    .pipe(gulp.dest('./app/images'));
+});
+
+gulp.task('copy-json', function() {
+  gulp.src('./src/json/*')
+    .pipe(plumber())
+    .pipe(gulp.dest('./app/static/json'));
+});
 gulp.task('open', function(done) {
     gulp.src('')
         .pipe(gulpOpen({
@@ -97,7 +112,8 @@ gulp.task('script', function() {
 gulp.task('template', function() {
     gulp.src('./src/*.html')
         .pipe(plumber())
-        .pipe(gulp.dest('./app'));
+        .pipe(gulp.dest('./app'))
+        .pipe(connect.reload());
 });
 
 
@@ -108,13 +124,15 @@ gulp.task('default', function() {
 
 gulp.task('watch', function() {
     gulp.watch('./src/script/*.js', ['script']);
+    // gulp.watch('./src/json/*.json', ['script']);
     gulp.watch('./src/*.html', ['template']);
 });
 
 gulp.task('dist', [
     'script',
     'copy-bundle',
-    'template'
+    'template',
+    // 'json'
 ]);
 
 
@@ -124,5 +142,7 @@ gulp.task('dev', [
     'watch',
     'open',
     'browser-sync',
-    'copy-image'
+    'copy-image',
+    'copy-images',
+    'copy-json'
 ]);
