@@ -13,7 +13,7 @@ var jshint = require('gulp-jshint'),
     gulpOpen = require('gulp-open'),
     connect = require('gulp-connect');
 
-var browserSync = require('browser-sync').create();
+// var browserSync = require('browser-sync').create();
 var host = {
     path: 'app',
     port: 3000,
@@ -35,11 +35,11 @@ gulp.task('copy-bundle', function() {
         .pipe(gulp.dest('./app/static/css'));
 
     gulp.src([
-      // './bower_components/jquery/dist/jquery.min.js',
-      './bower_components/zepto/zepto.min.js',
+      './bower_components/jquery/dist/jquery.min.js',
+      // './bower_components/zepto/zepto.min.js',
       // '/lazyload/src/script/sm.min.js',
-      // './bower_components/jquery_lazyload/jquery.lazyload.js',
-      // './bower_components/underscore/underscore-min.js'
+      './bower_components/jquery_lazyload/jquery.lazyload.js',
+      './bower_components/underscore/underscore-min.js'
         ])
         .pipe(plumber())
         .pipe(concat('bundle.js'))
@@ -83,11 +83,11 @@ gulp.task('open', function(done) {
 });
 
 
-gulp.task('browser-sync', function() {
-    browserSync.init({
-        proxy: "http://localhost:3000"
-    });
-});
+// gulp.task('browser-sync', function() {
+//     browserSync.init({
+//         proxy: "http://localhost:3000"
+//     });
+// });
 
 // gulp.task('serve', function () {
 //     browserSync.init({
@@ -140,8 +140,8 @@ gulp.task('dev', [
     'connect',
     'dist',
     'watch',
-    'open',
-    'browser-sync',
+    // 'open',     
+    // 'browser-sync',
     'copy-image',
     'copy-images',
     'copy-json'

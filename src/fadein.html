@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <img class="lazy" data-original="./static/img/1.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/2.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/3.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/4.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/5.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/6.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/7.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/8.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/10.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/11.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/12.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/14.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/15.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/16.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/17.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/18.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/19.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/20.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/21.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/22.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/23.png" width="640" height="480">
+    <img class="lazy" data-original="./static/img/24.png" width="640" height="480">
+    <script src="./static/js/bundle.js"></script>
+    <script src="./static/js/all.js"></script>
+    <script>
+    $(function() {
+        $("img.lazy").lazyload({
+            effect: "fadeIn",
+            threshold : 200,
+            failure_limit : 5
+        });
+    });
+    </script>
+</body>
+
+</html>
