@@ -140,7 +140,6 @@ gulp.task('dev', [
     'connect',
     'dist',
     'watch',
-    // 'open',     
     // 'browser-sync',
     'copy-image',
     'copy-images',
